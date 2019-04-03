@@ -7,6 +7,7 @@
 </div>
 <button (click)="onInitConnection()">INIT</button>
 <button (click)="onMessage('test ' + messages.length)">SEND MESSAGE</button>
+<button (click)="onDisconnect()">DISCONNECT</button>
 
 <div *ngFor="let m of messages">
   {{ m }}

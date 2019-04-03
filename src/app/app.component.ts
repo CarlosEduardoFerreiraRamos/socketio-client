@@ -29,12 +29,13 @@ export class AppComponent {
         this.messages.push('ws', message);
       });      
 
-    this._service.onEvent('CONNECT')
+    this._service.onEvent('connect')
       .subscribe(() => {
+        this._service.send('I\'m connected!');
         console.log('connected');
       });
       
-    this._service.onEvent('DISCONNECT')
+    this._service.onEvent('disconnect')
       .subscribe(() => {
         console.log('disconnected');
       });
@@ -50,5 +51,9 @@ export class AppComponent {
   onMessage(message: string) {
     // this._service.send(message);
     this._service.sendWs(message);
+  }
+
+  onDisconnect() {
+    this._service.disconnect();
   }
 }

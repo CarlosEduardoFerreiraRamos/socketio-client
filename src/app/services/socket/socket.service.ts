@@ -24,6 +24,10 @@ export class SocketService {
     this._socket.emit('ws', ws);
   }
 
+  public disconnect(): void {
+    this._socket.disconnect();
+  }
+
   public onMessage(): Observable<string> {
     return new Observable( observer => this._socket.on('message', data => observer.next(data)));
   }
